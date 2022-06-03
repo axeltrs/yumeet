@@ -1,0 +1,627 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a documentation for Web project you can see and also test our request in API .",
+    "version": "1.0.0",
+    "title": "API for Web project groupe n°59",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "alex.lens@epitech.eu"
+    }
+  },
+  "host": "localhost:4000",
+  "basePath": "/api/",
+  "schemes": [
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "USERS MANAGEMENT",
+      "description": "All routes concerning users"
+    },
+    {
+      "name": "CRYPTO-CURRENCIES",
+      "description": "All routes concerning cryptos"
+    },
+    {
+      "name": "PRESS-REVIEW",
+      "description": "All routes concerning articles"
+    }
+  ],
+  "paths": {
+    "/user/register": {
+      "post": {
+        "tags": [
+          "USERS MANAGEMENT"
+        ],
+        "summary": "Add a new users (no need to be connected)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User params we need",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UsersRegister"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "USERS MANAGEMENT"
+        ],
+        "summary": "Login with your user account (no need to be connected)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User logins params we need",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UsersLogin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/logout": {
+      "post": {
+        "tags": [
+          "USERS MANAGEMENT"
+        ],
+        "summary": "Logout with your user account (need to be connected)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "query",
+            "description": "Token user",
+            "required": true,
+            "type": "string",
+            "collectionFormat": "multi"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/profile": {
+      "get": {
+        "tags": [
+          "USERS MANAGEMENT"
+        ],
+        "summary": "See information of your user account (need to be connected)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "jwt",
+            "in": "query",
+            "description": "Token user",
+            "required": true,
+            "type": "string",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "USERS MANAGEMENT"
+        ],
+        "summary": "Modify your user account (need to be connected)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User logins params we need",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserProfilePut"
+            }
+          },
+          {
+            "name": "jwt",
+            "in": "query",
+            "description": "Token user",
+            "required": true,
+            "type": "string",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/crypto": {
+      "get": {
+        "tags": [
+          "CRYPTO-CURRENCIES"
+        ],
+        "summary": "All Cryptos (no need to be connected)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CRYPTO-CURRENCIES"
+        ],
+        "summary": "Post a new cryptos (need to be connected in admin)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Crypto params we need to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CryptoPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/crypto/{Crypto}": {
+      "get": {
+        "tags": [
+          "CRYPTO-CURRENCIES"
+        ],
+        "summary": "Select one crypto with our id (no need to be connected)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Crypto",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CRYPTO-CURRENCIES"
+        ],
+        "summary": "delete one crypto with our id (need to be connected in admin)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Crypto",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/crypto/{Crypto}/history/daily": {
+      "get": {
+        "tags": [
+          "CRYPTO-CURRENCIES"
+        ],
+        "summary": "Select history crypto with our id this day (no need to be connected)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Crypto",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/crypto/{Crypto}/historyDate/daily": {
+      "post": {
+        "tags": [
+          "CRYPTO-CURRENCIES"
+        ],
+        "summary": "Select history crypto with our id between two dates (no need to be connected)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Crypto",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Crypto params we need",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CryptoGetWithIdAndPeriod"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/articlesAFINIR": {
+      "get": {
+        "tags": [
+          "PRESS-REVIEW"
+        ],
+        "summary": "Select one crypto with our id (need to be connected)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Crypto params we need",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CryptoGetWithId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/articles/IDAFINIR": {
+      "get": {
+        "tags": [
+          "PRESS-REVIEW"
+        ],
+        "summary": "Select one crypto with our id (need to be connected)",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Crypto params we need",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CryptoGetWithId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Correct input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "UsersRegister": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@epitech.eu"
+        },
+        "password": {
+          "type": "string",
+          "example": "Password25Strong."
+        }
+      }
+    },
+    "UsersLogin": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "YourEmail@epitech.eu"
+        },
+        "password": {
+          "type": "string",
+          "example": "YourPassword"
+        }
+      }
+    },
+    "UserProfileGet": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 99
+        }
+      }
+    },
+    "UserProfilePut": {
+      "type": "object",
+      "required": [
+        "email",
+        "password",
+        "nickname",
+        "currency",
+        "keywords"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@epitech.eu"
+        },
+        "password": {
+          "type": "string",
+          "example": "Password25Strong."
+        },
+        "nickname": {
+          "type": "string",
+          "example": "AlexEpitech"
+        },
+        "currency": {
+          "type": "string",
+          "example": "EUR"
+        },
+        "keywords": {
+          "type": "string",
+          "example": "['BTC', 'ETH']"
+        }
+      }
+    },
+    "CryptoGetWithId": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "5"
+        }
+      }
+    },
+    "CryptoGetWithIdAndPeriod": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "startDate": {
+          "type": "integer",
+          "example": "Wed Dec 08 2021 11:23:29 GMT+0100 (heure normale d’Europe centrale)"
+        },
+        "endDate": {
+          "type": "string",
+          "example": "Tue Dec 14 2021 11:23:29 GMT+0100 (heure normale d’Europe centrale)"
+        }
+      }
+    },
+    "CryptoPost": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "cmid": {
+          "type": "string",
+          "example": "BTC"
+        }
+      }
+    }
+  }
+}
